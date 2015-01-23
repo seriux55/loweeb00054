@@ -1,0 +1,3 @@
+base_guelek_homepage:
+    path:     /
+    defaults: { _controller: BaseGuelekBundle:Default:index }
