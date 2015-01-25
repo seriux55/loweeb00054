@@ -2,12 +2,50 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Guelek | {% endblock %}</title>
+        <!--[if lt IE 9]
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js></script>
+        <![endif]-->
+	{% block stylesheets %}<link rel="stylesheet" href="{{ asset('bundles/baseguelek/css/style.css') }}">{% endblock %}
+        
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block headscript %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        <div class="bloc_page">
+            
+            {% block header %}
+                
+                <div class="header_bloc">
+                    <header>
+                        <h1><a href="#"><img src="{{ asset('bundles/baseguelek/images/icones/guelek.png') }}"></a></h1>
+                            <nav>
+                                <ul>
+                                    <li><a href="#">Accueil</a></li>
+                                    <!--<li><a href="#">Info</a></li>-->
+                                    <!--<li><a href="#">Documentaire</a></li>-->
+				</ul>
+                            </nav>
+                    </header>
+		</div>
+                
+            {% endblock %}
+            
+            {% block body %}{% endblock %}
+            
+            {% block javascripts %}{% endblock %}
+            
+            {% block footer %}
+                <!--<aside>
+                    <p>Une question ? un avis ? Une remarques ? <a href="#">écrivez-nous</a>.</p>
+                </aside>-->
+                <div class="footer_bloc">	
+                    <footer>
+                        <p>© 2014 GUELEK.COM</p>
+                    </footer>
+                </div>
+            {% endblock %}
+            
+        </div>
     </body>
 </html>
