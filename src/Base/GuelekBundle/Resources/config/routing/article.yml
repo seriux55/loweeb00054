@@ -1,0 +1,33 @@
+article:
+    path:     /
+    defaults: { _controller: "BaseGuelekBundle:Article:index" }
+
+article_show:
+    path:     /{id}/show
+    defaults: { _controller: "BaseGuelekBundle:Article:show" }
+
+article_new:
+    path:     /new
+    defaults: { _controller: "BaseGuelekBundle:Article:new" }
+
+article_create:
+    path:     /create
+    defaults: { _controller: "BaseGuelekBundle:Article:create" }
+    requirements: { _method: post }
+
+article_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BaseGuelekBundle:Article:edit" }
+
+article_update:
+    path:     /{id}/update
+    defaults: { _controller: "BaseGuelekBundle:Article:update" }
+    requirements: { _method: post|put }
+
+article_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BaseGuelekBundle:Article:delete" }
+    requirements: { _method: post|delete }
+
+lol:
+    path:     /web/bundles/baseguelek/images/uploads/

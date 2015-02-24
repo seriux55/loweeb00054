@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ArticleType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -16,11 +16,15 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('contents')
+            ->add('contents', 'textarea', array(
+                                            'attr'   => array('class' => 'tinymce'),
+                                        )
+            )
             ->add('comments')
             ->add('created')
             ->add('updated')
             ->add('validate')
+            ->add('published')
             ->add('user')
         ;
     }

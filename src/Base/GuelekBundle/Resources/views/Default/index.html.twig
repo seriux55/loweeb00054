@@ -13,10 +13,10 @@
             <article>
                 <header>
                     <h2>{{ article.title }}</h2>
-                    <time>Par {{ article.alias }}, le {{ article.deposit|date('d/m/Y') }}</time><br />
+                    <time>Par Nadir A, le {{ article.published|date('d/m/Y') }}</time><br />
                 </header>
                 <div class="content">
-                    {{ article.content|raw }}
+                    {{ article.contents|raw }}
                 </div>
             </article>
         {% endfor %}

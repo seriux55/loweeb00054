@@ -13,6 +13,7 @@
                 <th>Created</th>
                 <th>Updated</th>
                 <th>Validate</th>
+                <th>Published</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -26,6 +27,7 @@
                 <td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if entity.updated %}{{ entity.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.validate }}</td>
+                <td>{{ entity.published }}</td>
                 <td>
                 <ul>
                     <li>

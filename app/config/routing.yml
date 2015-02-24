@@ -8,3 +8,7 @@ base_user:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+BaseGuelekBundle_article:
+        resource: "@BaseGuelekBundle/Resources/config/routing/article.yml"
+        prefix:   /article

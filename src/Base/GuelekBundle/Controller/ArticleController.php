@@ -4,16 +4,13 @@ namespace Base\GuelekBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
 use Base\GuelekBundle\Entity\Article;
 use Base\GuelekBundle\Form\ArticleType;
 
 /**
  * Article controller.
  *
- * @Route("/article")
  */
 class ArticleController extends Controller
 {
@@ -21,9 +18,6 @@ class ArticleController extends Controller
     /**
      * Lists all Article entities.
      *
-     * @Route("/", name="article")
-     * @Method("GET")
-     * @Template()
      */
     public function indexAction()
     {
@@ -31,16 +25,14 @@ class ArticleController extends Controller
 
         $entities = $em->getRepository('BaseGuelekBundle:Article')->findAll();
 
-        return array(
+        return $this->render('BaseGuelekBundle:Article:index.html.twig', array(
             'entities' => $entities,
-        );
+        ));
     }
+    
     /**
      * Creates a new Article entity.
      *
-     * @Route("/", name="article_create")
-     * @Method("POST")
-     * @Template("BaseGuelekBundle:Article:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -56,10 +48,10 @@ class ArticleController extends Controller
             return $this->redirect($this->generateUrl('article_show', array('id' => $entity->getId())));
         }
 
-        return array(
+        return $this->render('BaseGuelekBundle:Article:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        );
+        ));
     }
 
     /**
@@ -84,27 +76,21 @@ class ArticleController extends Controller
     /**
      * Displays a form to create a new Article entity.
      *
-     * @Route("/new", name="article_new")
-     * @Method("GET")
-     * @Template()
      */
     public function newAction()
     {
         $entity = new Article();
         $form   = $this->createCreateForm($entity);
 
-        return array(
+        return $this->render('BaseGuelekBundle:Article:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        );
+        ));
     }
 
     /**
      * Finds and displays a Article entity.
      *
-     * @Route("/{id}", name="article_show")
-     * @Method("GET")
-     * @Template()
      */
     public function showAction($id)
     {
@@ -118,18 +104,15 @@ class ArticleController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('BaseGuelekBundle:Article:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
-        );
+        ));
     }
 
     /**
      * Displays a form to edit an existing Article entity.
      *
-     * @Route("/{id}/edit", name="article_edit")
-     * @Method("GET")
-     * @Template()
      */
     public function editAction($id)
     {
@@ -144,11 +127,11 @@ class ArticleController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('BaseGuelekBundle:Article:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ));
     }
 
     /**
@@ -172,9 +155,6 @@ class ArticleController extends Controller
     /**
      * Edits an existing Article entity.
      *
-     * @Route("/{id}", name="article_update")
-     * @Method("PUT")
-     * @Template("BaseGuelekBundle:Article:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -196,17 +176,15 @@ class ArticleController extends Controller
             return $this->redirect($this->generateUrl('article_edit', array('id' => $id)));
         }
 
-        return array(
+        return $this->render('BaseGuelekBundle:Article:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ));
     }
     /**
      * Deletes a Article entity.
      *
-     * @Route("/{id}", name="article_delete")
-     * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
     {

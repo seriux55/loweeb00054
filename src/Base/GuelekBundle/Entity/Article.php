@@ -70,6 +70,13 @@ class Article
     private $validate;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="published", type="string", length=255)
+     */
+    private $published;
+    
+    /**
      * initialiser deposit
      */
     function __construct() {
@@ -223,7 +230,30 @@ class Article
     {
         return $this->validate;
     }
-    
+
+    /**
+     * Set published
+     *
+     * @param string $published
+     * @return Article
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return string 
+     */
+    public function getPublished()
+    {
+        return $this->published;
+    }
+        
     /**
      * Set user
      *

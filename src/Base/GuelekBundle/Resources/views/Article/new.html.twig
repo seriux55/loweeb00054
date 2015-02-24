@@ -5,11 +5,25 @@
 
     {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('article') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('article') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
+    
+    <script type="text/javascript" src="{{ asset('bundles/baseguelek/js/tinymce/tinymce.min.js') }}"></script>
+    <script type="text/javascript">
+    tinymce.init({
+        selector: ".tinymce",
+        plugins: [
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen jbimages",
+            "insertdatetime media table contextmenu paste"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | jbimages"
+    });
+    </script>
+
 {% endblock %}
